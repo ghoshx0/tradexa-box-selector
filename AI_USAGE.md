@@ -1,60 +1,50 @@
 # AI Usage Report
 
-## AI Tools Used
+## 1. AI Tools Used
 
 * ChatGPT
 
-## How AI Was Used
+## 2. Prompts Used
 
-AI was used as a development assistant for:
+Examples of prompts used during development:
 
-* Project planning
-* Django project structure guidance
-* Django REST Framework implementation guidance
-* Recommendation algorithm design
-* Test case suggestions
-* Documentation preparation
+* "Help me plan the architecture for a Django-based box recommendation system."
+* "Design Django models for products, boxes, orders, and order items."
+* "Create a Django REST Framework API for box recommendations."
+* "How can I implement box selection based on dimensions, weight, cost, and unused volume?"
+* "Generate test cases for a Django box recommendation API."
+* "Help me create README.md, AI_USAGE.md, and TEST_OUTPUT.md files."
 
-## Accepted Output
+## 3. Accepted Output
 
-* API structure suggestions
-* Django model organization
-* Recommendation algorithm approach
-* Automated testing ideas
-* Documentation templates
+* Django project structure recommendations.
+* API endpoint design suggestions.
+* Recommendation algorithm approach.
+* Test case ideas.
+* Documentation templates.
 
-## Modified Output
+## 4. Rejected or Modified Output
 
-* Updated recommendation request format to support:
-
-  * product_id
-  * quantity
-
+* Modified the recommendation request structure to support product quantities.
 * Added validation for invalid product IDs.
-
-* Added cheapest-box selection logic.
-
 * Added unused-volume tie-breaker logic.
+* Simplified some implementation details to fit the assignment scope.
+* Chose not to move business logic into a separate service layer.
 
-* Added Bootstrap dashboard page.
-
-## Rejected Output
-
-* Suggestions that introduced unnecessary complexity for the assignment scope.
-* Architectural refactoring that was not required for the assignment.
-
-## Mistakes Found
+## 5. Mistakes Found in AI Output
 
 * Initial implementation did not safely handle invalid product IDs.
-* Error handling was improved using Product.DoesNotExist checks.
+* Some suggestions introduced unnecessary complexity for the assignment scope.
+* Error handling was improved manually using Product.DoesNotExist checks.
 
-## Verification Process
+## 6. Verification Process
 
-* Manual API testing through Django REST Framework.
-* Multiple recommendation scenarios tested.
-* Validation of dimension and weight constraints.
-* Automated testing using Django Test Framework.
+* Manual API testing using Django REST Framework's browsable API.
+* Tested multiple product, box, dimension, and weight scenarios.
+* Verified error handling for invalid product IDs.
+* Executed automated tests using Django Test Framework.
+* Performed a fresh-clone test from GitHub, installed dependencies, ran migrations, executed tests, and started the application successfully.
 
 ## Final Validation
 
-All automated tests passed successfully before submission.
+All automated tests passed successfully and the project was verified from a clean clone before submission.
