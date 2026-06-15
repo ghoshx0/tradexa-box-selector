@@ -127,6 +127,29 @@ Sample Response:
 }
 ```
 
+## Screenshots
+
+### Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+### Products API
+
+![Products API](screenshots/products-api.png)
+
+### Boxes API
+
+![Boxes API](screenshots/boxes-api.png)
+
+### Recommendation Result
+
+![Recommendation Result](screenshots/recommend-box.png)
+
+### Test Execution
+
+![Tests Passed](screenshots/tests-passed.png)
+
+
 ## Running Tests
 
 ```bash
