@@ -37,6 +37,75 @@ The recommendation engine evaluates product dimensions and weight, then selects 
 * The cheapest valid box is selected.
 * If multiple boxes have the same cost, the box with the smallest unused volume is selected.
 
+## Box Selection Approach
+
+The recommendation engine follows the steps below:
+
+### 1. Calculate Required Dimensions
+
+For all products in the order:
+
+* Required Length = Maximum product length
+* Required Width = Maximum product width
+* Required Height = Sum of product heights multiplied by quantity
+
+Example:
+
+```text
+Required Length = max(product.length)
+Required Width = max(product.width)
+Required Height = Σ(product.height × quantity)
+```
+
+### 2. Calculate Total Weight
+
+The total order weight is calculated as:
+
+```text
+Total Weight = Σ(product.weight × quantity)
+```
+
+### 3. Validate Box Dimensions
+
+A box is considered only if:
+
+```text
+box.internal_length >= required_length
+box.internal_width >= required_width
+box.internal_height >= required_height
+```
+
+### 4. Validate Weight Capacity
+
+A box must also satisfy:
+
+```text
+box.max_weight >= total_weight
+```
+
+### 5. Select the Best Box
+
+Among all valid boxes:
+
+1. Choose the box with the lowest cost.
+2. If multiple boxes have the same cost, choose the box with the smallest unused volume.
+
+Unused volume is calculated as:
+
+```text
+unused_volume = box_volume - required_volume
+```
+
+where:
+
+```text
+box_volume = length × width × height
+required_volume = required_length × required_width × required_height
+```
+
+This approach ensures that the selected box satisfies dimension and weight constraints while minimizing shipping cost and unused space.
+
+
 ## Installation
 
 1. Clone the repository
