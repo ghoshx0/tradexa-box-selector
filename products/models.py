@@ -7,6 +7,7 @@ class Product(models.Model):
     width = models.FloatField()
     height = models.FloatField()
     weight = models.FloatField()
+    is_fragile = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

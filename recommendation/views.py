@@ -30,8 +30,12 @@ class RecommendBoxView(APIView):
             
             try:
                 product = Product.objects.get(
-                    id=item["product_id"]
-                )
+                    id=item["product_id"])
+
+                quantity = item["quantity"]
+                padding = 4 if product.is_fragile else 0
+                
+                
 
             except Product.DoesNotExist:
                 return Response(
@@ -47,17 +51,14 @@ class RecommendBoxView(APIView):
 
             required_length = max(
                 required_length,
-                product.length
-            )
+                product.length + padding)
 
             required_width = max(
                 required_width,
-                product.width
-            )
+                product.width + padding)
 
             required_height += (
-                product.height * quantity
-            )
+                product.height + padding)* quantity
 
             total_weight += (
                 product.weight * quantity
